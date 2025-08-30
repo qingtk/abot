@@ -1,0 +1,14 @@
+{ 
+  "name": "abot",
+  "productName": "abot",
+  "version": "1.0.0",
+  "description": "a bot since 2025",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^1.16.0"
+  }
+}
