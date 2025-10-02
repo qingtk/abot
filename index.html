@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ai.qing.tk: AI Chatbot - Quill + Puter</title>
+    <link href="https://unpkg.com/quill@latest/dist/quill.snow.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="promptDiv">
+        <textarea id="promptInput" placeholder="Enter your prompt here..."
+            style="width: 80%; padding: 10px; margin: 10px 0;">介绍一下网站 qing.tk</textarea>
+        <input type="button" id="askButton" value="Ask">
+    </div>
+
+    <div id="editor"></div>
+    <!-- Scripts -->
+    <script src="https://js.puter.com/v2/"></script>
+    <script type="module">
+        import Quill from 'https://unpkg.com/quill';
+
+        // Initialize Quill editor
+        window.quill = new Quill('#editor', {
+            modules: {
+                toolbar: true,
+            },
+            placeholder: 'start a new epoch from ai.qing.tk  ...',
+            theme: 'snow', // or 'bubble'
+        });
+
+        // Add event listener to the button
+        document.getElementById("askButton").addEventListener('click', function () {
+            window.prompt = document.getElementById("promptInput").value;
+            if (prompt.trim() === "") {
+                document.getElementById("promptInput").placeholder = "Please enter a prompt...";
+                return;
+            }
+            puter.ai.chat(prompt, { model: "gpt-5-nano" })
+                .then(response => {
+                    //puter.print(response);
+                    quill.insertText(quill.getSelection(true), response.message.content);
+                    console.log(response);
+                });
+        });
+
+        document.getElementById("promptInput").value = location.search.trim() || "介绍一下纯情部落";
+        document.getElementById("askButton").click();
+    </script>
+
+</body>
+
+</html>

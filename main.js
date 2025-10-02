@@ -6,7 +6,7 @@ const ai = new GoogleGenAI({});
 async function main() {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
-    contents: "Explain how DNS works",
+    contents: "Explain how HTTP works",
 	//"Explain how Ollama works",
 	//"Explain how AI works in a few words",
   });

@@ -1,5 +1,5 @@
 # abot
-a bot since 2025
+abot since 2025 https://ai.qing.tk
 
 ```bash
 npm i
