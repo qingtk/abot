@@ -4,6 +4,10 @@ from brain.learning import daily_learning
 from models.ollama_client import OllamaClient
 
 app = FastAPI()
+@app.get("/")
+def home():
+    return {"status": "ok"}
+
 llm = OllamaClient()
 
 @app.get("/run/{skill}")
